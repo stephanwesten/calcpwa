@@ -22,7 +22,10 @@ wrangler publish
 
 goto https://calc-pwa.saw.workers.dev
 
+add bootstrap: 
+  ng add @ng-bootstrap/ng-bootstrap
 
+  
 
 ------
 

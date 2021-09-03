@@ -1,0 +1,76 @@
+
+// @import '~bootstrap/scss/bootstrap';
+
+// @import "functions";
+// @import "variables";
+// @import "mixins";
+// @import "root";
+// @import "reboot";
+// @import "type";
+// @import "images";
+// @import "code";
+// @import "grid";
+
+// 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
+@import "~bootstrap/scss/functions";
+
+// 2. Include any default variable overrides here
+
+// 3. Include remainder of required Bootstrap stylesheets
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+// 4. Include any optional Bootstrap components as you like
+@import "~bootstrap/scss/grid";
+@import "~bootstrap/scss/buttons";
+
+
+.calc-container {
+    @extend .container;
+    background-color: #feba51;
+}
+
+.calc-row {
+    @extend .row;
+    // background-color: blue;
+}
+
+.calc-col {
+    @extend .col;
+    // background-color: purple;
+    margin-top: 10px; 
+    margin-bottom: 10px; 
+}
+
+.calc-btn {
+    @extend .btn; 
+    @extend .btn-outline-primary;  
+    @extend .btn-lg;
+    @extend .btn-block;
+    color: #575757;
+    background-color: #f8f8f8;  /* bit softer white */
+}
+
+.terminal {
+    position: relative;
+    border-radius: 6px;
+    padding-top: 15px;
+    margin-top: 8px;
+    overflow: hidden;
+    background-color: rgb(15, 15, 16);
+  }
+
+  .terminal pre {
+    font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+    color: white;
+    padding: 0 1rem 1rem;
+    margin: 0;
+  }
+
+  footer {
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    line-height: 20px;
+  }
+
