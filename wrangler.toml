@@ -1,0 +1,10 @@
+name = "calc-pwa"
+type = "webpack"
+route = 'calc-pwa'
+zone_id = ''
+usage_model = ''
+compatibility_flags = []
+workers_dev = true
+[site]
+bucket = "./dist/calc-pwa"
+entry-point = "workers-site"

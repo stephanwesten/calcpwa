@@ -1,3 +1,31 @@
+Created:
+
+generated using angular cli, added component pwa
+ng new calc-pwa
+  picked no routing and scss
+
+verify: ng serve, open browser at http://localhost:4200/
+
+ng add @angular/pwa
+  adds a pwa manifest in src/manifest.webmanifest, registers it and adds bunch of icons
+
+ng build
+wrangler init --site
+  followed instructions to edit the tomo file
+wrangler publish  
+
+
+wrangler init --site
+  in toml file changed bucket, entry-point, route (choose calc-pwa)
+
+wrangler publish  
+
+goto https://calc-pwa.saw.workers.dev
+
+
+
+------
+
 # CalcPwa
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.3.
