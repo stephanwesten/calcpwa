@@ -1,28 +1,20 @@
 
-// @import '~bootstrap/scss/bootstrap';
+@import '~bootstrap/scss/bootstrap';
 
-// @import "functions";
-// @import "variables";
-// @import "mixins";
-// @import "root";
-// @import "reboot";
-// @import "type";
-// @import "images";
-// @import "code";
-// @import "grid";
+// in case we want to optimize, problem is the text-right class import
+// // 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
+// @import "~bootstrap/scss/functions";
 
-// 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
-@import "~bootstrap/scss/functions";
+// // 2. Include any default variable overrides here
 
-// 2. Include any default variable overrides here
+// // 3. Include remainder of required Bootstrap stylesheets
+// @import "~bootstrap/scss/variables";
+// @import "~bootstrap/scss/mixins";
 
-// 3. Include remainder of required Bootstrap stylesheets
-@import "~bootstrap/scss/variables";
-@import "~bootstrap/scss/mixins";
-
-// 4. Include any optional Bootstrap components as you like
-@import "~bootstrap/scss/grid";
-@import "~bootstrap/scss/buttons";
+// // 4. Include any optional Bootstrap components as you like
+// @import "~bootstrap/scss/grid";
+// @import "~bootstrap/scss/buttons";
+// @import "~bootstrap/scss/reboot";   // needed to get 3 columns in the grid
 
 
 .calc-container {
@@ -48,15 +40,16 @@
     @extend .btn-lg;
     @extend .btn-block;
     color: #575757;
+    font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
     background-color: #f8f8f8;  /* bit softer white */
 }
 
 .terminal {
-    position: relative;
+    @extend .text-right;
+    @extend .h1;
     border-radius: 6px;
     padding-top: 15px;
     margin-top: 8px;
-    overflow: hidden;
     background-color: rgb(15, 15, 16);
   }
 
