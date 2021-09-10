@@ -25,6 +25,10 @@ goto https://calc-pwa.saw.workers.dev
 add bootstrap: 
   ng add @ng-bootstrap/ng-bootstrap
 
+
+expr-eval
+  npm install --save expr-eval
+  npm install --save @types/expr-eval
   
 
 ------

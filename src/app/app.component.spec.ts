@@ -22,10 +22,21 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('calc-pwa');
   });
 
-  it('should render title', () => {
+  it('operator click', () => {
     const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('calc-pwa app is running!');
+    const app = fixture.componentInstance;
+    app.clickDigit(2);
+    app.clickOperator("+");
+    app.clickDigit(4);
+    app.clickEqual();
+    expect(app.expression).toEqual(" 2 + 4");
+    expect(app.terminal).toEqual("6");
+    app.clickOperator("*");
+    app.clickDigit(3);
+    app.clickEqual();
+    expect(app.terminal).toEqual("18");
+
   });
+
 });
+

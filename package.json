@@ -21,7 +21,9 @@
     "@angular/router": "~12.2.0",
     "@angular/service-worker": "~12.2.0",
     "@ng-bootstrap/ng-bootstrap": "^10.0.0",
+    "@types/expr-eval": "^1.1.0",
     "bootstrap": "^4.5.0",
+    "expr-eval": "^2.0.2",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
