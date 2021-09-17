@@ -7,9 +7,14 @@ import { Value } from './model/value';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  host: {
+    '(document:keydown)': 'handleKeyboardEvents($event)'
+}
 })
 
+
+// 35.77 + 45 gaf zo'n uitkomst met heel veel nullen en een 1
 export class AppComponent {
   title = 'calc-pwa';
   terminal = "";
@@ -74,12 +79,35 @@ export class AppComponent {
     }
   }
 
+  handleKeyboardEvents(event: KeyboardEvent) {
+    console.log(event)
+    const digits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+    const operators =  ["+", "-", "/", "*"]
+    if (digits.indexOf(event.key) >= 0) {
+      this.terminal += event.key
+    } else if (operators.indexOf(event.key) >= 0) {
+      this.clickOperator(event.key)
+    } else if (event.key == "x") {
+      this.clickOperator("*")
+    } else if (event.key == ".") {
+      this.clickDecSep()
+    } else if (event.key == "=" || event.key == "Enter") {
+      this.clickEqual()
+    } else if (event.key == "c" || event.key == "Escape") {
+      this.clickClear()
+    } 
+  }
+
   clickEqual() {
-    this.expression.add(new Value(Number(this.terminal)))
-    console.log("expression=", this.expression.asString())
-    var expr = this.parser.parse(this.expression.asString())
-    this.terminal = expr.evaluate().toString()
-    this.expressionComplete = true
+    if (!this.expressionComplete) {
+      this.expression.add(new Value(Number(this.terminal)))
+      console.log("expression=", this.expression.asString())
+      var expr = this.parser.parse(this.expression.asString())
+      this.terminal = expr.evaluate().toString()
+      this.expressionComplete = true
+    } else {
+      console.log("click equal ignored")
+    }
   }
 
   clickClear() {
