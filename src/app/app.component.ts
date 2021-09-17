@@ -3,6 +3,7 @@ import * as expreval from 'expr-eval';
 import { Expression } from './model/expression';
 import { Operator } from './model/operator';
 import { Value } from './model/value';
+import { BuildTimeFile } from "../environments/buildtime-file";
 
 @Component({
   selector: 'app-root',
@@ -21,6 +22,7 @@ export class AppComponent {
   expression = new Expression
   expressionComplete = false; // replace this with this.sheet.getLastOutcome()
   parser = new expreval.Parser();
+  readonly buildtimestamp = BuildTimeFile.buildtime
 
   displayTerminal() {
     if (this.terminal == "") {

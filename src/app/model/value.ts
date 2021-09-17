@@ -15,7 +15,7 @@ export class Value extends ExpressionItem {
   }
 
   asString(): string {
-    return this.value.toLocaleString()
+    return this.value.toString()
   }
 
 }
