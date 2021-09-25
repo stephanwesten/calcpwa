@@ -1,0 +1,57 @@
+      <!-- <div class="row calc-row">
+        <div class="col col-smaller"><button class="calculator-btn calculator-btn-small-text" ng-click="clickRecall()">Recall</button></div>
+        <div class="col col-smaller"><button class="calculator-btn calculator-btn-small-text" ng-click="clickClear()">Clear</button></div>
+        <div class="col col-smaller"><button class="calculator-btn calculator-btn-small-text" ng-click="selectAdvancedOperator()"><i>f</i>(x)</button></div>
+        <div class="col  col-smaller"><button class="calculator-btn" ng-click="clickDelete()">⌫</button></div>
+      </div>
+
+      <div class="row calc-row">
+        <div class="col col-smaller"><button class="calculator-btn calculator-btn-small-text" ng-click="clickOpenBracket()">(</button></div>
+        <div class="col col-smaller"><button class="calculator-btn calculator-btn-small-text" ng-click="clickCloseBracket()">)</button></div>
+        <div class="col col-smaller"><button class="calculator-btn" ng-click="clickPlusMinOperator()">±</button></div>
+        <div class="col col-smaller"><button class="calculator-btn" ng-click="clickOperator('/')">/</button></div>
+      </div> -->
+
+
+
+      <div class="calc-container">
+        <div class="calc-row">
+          <div class="calc-col">
+            <div class="expression">
+              <pre>{{displayExpression()}}</pre>
+            </div>        
+          </div>
+        </div>
+
+      <div class="calc-row">
+          <div class="calc-col">
+            <div class="terminal">
+              <pre>{{displayTerminal()}}</pre>
+            </div>        
+          </div>
+        </div>
+
+          <div class="calc-row row-cols-4">
+            <div class="calc-col"><button class="calc-btn" (click)="clickClear()">Clear</button></div>
+            <div class="calc-col"></div>
+            <div class="calc-col"></div>
+            <div class="calc-col"><button class="calc-btn" (click)="clickOperator('/')">/</button></div>
+
+            <div class="calc-col"><button class="calc-btn" (click)="clickDigit(7)">7</button></div>
+            <div class="calc-col"><button class="calc-btn" (click)="clickDigit(8)">8</button></div>
+            <div class="calc-col"><button class="calc-btn" (click)="clickDigit(9)">9</button></div>
+            <div class="calc-col"><button class="calc-btn" (click)="clickOperator('*')">x</button></div>
+            <div class="calc-col"><button class="calc-btn" (click)="clickDigit(4)">4</button></div>
+            <div class="calc-col"><button class="calc-btn" (click)="clickDigit(5)">5</button></div>
+            <div class="calc-col"><button class="calc-btn" (click)="clickDigit(6)">6</button></div>
+            <div class="calc-col"><button class="calc-btn" (click)="clickOperator('-')">-</button></div>
+            <div class="calc-col"><button class="calc-btn" (click)="clickDigit(1)">1</button></div>
+            <div class="calc-col"><button class="calc-btn" (click)="clickDigit(2)">2</button></div>
+            <div class="calc-col"><button class="calc-btn" (click)="clickDigit(3)">3</button></div>
+            <div class="calc-col"><button class="calc-btn" (click)="clickOperator('+')">+</button></div>
+            <div class="calc-col"><button class="calc-btn" (click)="clickDigit(0)">0</button></div>
+            <div class="calc-col"><button class="calc-btn" (click)="clickDecSep()">.</button></div>
+            <div class="calc-col"></div>
+            <div class="calc-col"><button class="calc-btn" (click)="clickEqual()">=</button></div>
+        </div>
+      </div>
