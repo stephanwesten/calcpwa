@@ -1,9 +1,8 @@
-<p>sheet works!</p>
 
-<table>
-    <tbody>
-        <tr *ngFor="let expression of getExpressions()">
-            <td>{{expression.asDisplay()}}</td>
-        </tr>
-    </tbody>
-</table>
+<mat-grid-list cols="5" rowHeight="100px" class="gridlist">
+    <ng-container *ngFor="let expression of getExpressions()">
+        <mat-grid-tile [colspan]="3" [rowspan]="1">{{expression.asDisplay()}}</mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="1"> = </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="1">{{expression.outcome}}</mat-grid-tile>
+    </ng-container>
+</mat-grid-list>    

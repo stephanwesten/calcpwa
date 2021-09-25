@@ -2,9 +2,11 @@ import { ExpressionItem } from "./expression-item";
 
 export class Expression {
   private items: Array<ExpressionItem>;
+  outcome?: number;
 
   constructor() {
-    this.items = [];
+    this.items = []
+    this.outcome = undefined
   }
 
   size(): number {
@@ -25,6 +27,9 @@ export class Expression {
     this.items.forEach(item => {
       result = result + " " + item.asString()
     })
+    if (this.outcome) {
+      result += " = " + this.outcome
+    }
     return result
   }
 

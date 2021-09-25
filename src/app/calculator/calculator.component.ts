@@ -101,6 +101,8 @@ export class CalculatorComponent implements OnInit {
       this.clickEqual()
     } else if (event.key == "c" || event.key == "Escape") {
       this.clickClear()
+    } else if (event.key == "P") {
+      this.populateSheet()
     } 
   }
 
@@ -109,8 +111,10 @@ export class CalculatorComponent implements OnInit {
       this.expression.add(new Value(Number(this.terminal)))
       console.log("expression=", this.expression.asString())
       var expr = this.parser.parse(this.expression.asString())
-      this.terminal = expr.evaluate().toString()
+      var result = expr.evaluate()
+      this.terminal = result.toString()
       this.expressionComplete = true
+      this.expression.outcome = result
       this.calcService.currentSheet.add(this.expression)
     } else {
       console.log("click equal ignored")
@@ -121,5 +125,15 @@ export class CalculatorComponent implements OnInit {
     this.expression = new Expression
     this.terminal = ""
   }  
+
+  populateSheet() {
+    this.clickDigit(5)
+    this.clickOperator("*")
+    this.clickDigit(2)
+    this.clickEqual()
+    this.clickOperator("+")
+    this.clickDigit(5)
+    this.clickEqual()
+  }
 
 }
