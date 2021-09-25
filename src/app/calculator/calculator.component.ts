@@ -3,6 +3,7 @@ import * as expreval from 'expr-eval';
 import { Expression } from '../model/expression';
 import { Operator } from '../model/operator';
 import { Value } from '../model/value';
+import { CalcService } from '../calc.service';
 
 
 @Component({
@@ -17,15 +18,15 @@ import { Value } from '../model/value';
 // 35.77 + 45 gaf zo'n uitkomst met heel veel nullen en een 1
 export class CalculatorComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
   terminal = "";
   expression = new Expression
   expressionComplete = false; // replace this with this.sheet.getLastOutcome()
   parser = new expreval.Parser();
+
+  constructor(private calcService: CalcService) { }
+
+  ngOnInit(): void {
+  }
 
   displayTerminal() {
     if (this.terminal == "") {
@@ -110,6 +111,7 @@ export class CalculatorComponent implements OnInit {
       var expr = this.parser.parse(this.expression.asString())
       this.terminal = expr.evaluate().toString()
       this.expressionComplete = true
+      this.calcService.currentSheet.add(this.expression)
     } else {
       console.log("click equal ignored")
     }
