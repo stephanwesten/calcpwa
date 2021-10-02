@@ -2,7 +2,7 @@
         <div class="col col-smaller"><button class="calculator-btn calculator-btn-small-text" ng-click="clickRecall()">Recall</button></div>
         <div class="col col-smaller"><button class="calculator-btn calculator-btn-small-text" ng-click="clickClear()">Clear</button></div>
         <div class="col col-smaller"><button class="calculator-btn calculator-btn-small-text" ng-click="selectAdvancedOperator()"><i>f</i>(x)</button></div>
-        <div class="col  col-smaller"><button class="calculator-btn" ng-click="clickDelete()">⌫</button></div>
+        
       </div>
 
       <div class="row calc-row">
@@ -33,7 +33,7 @@
 
           <div class="calc-row row-cols-4">
             <div class="calc-col"><button class="calc-btn" (click)="clickClear()">Clear</button></div>
-            <div class="calc-col"></div>
+            <div class="calc-col"><button class="calc-btn" (click)="clickDelete()">⌫</button></div>
             <div class="calc-col"></div>
             <div class="calc-col"><button class="calc-btn" (click)="clickOperator('/')">/</button></div>
 

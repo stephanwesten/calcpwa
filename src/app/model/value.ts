@@ -4,7 +4,7 @@ import { ExpressionItem } from "./expression-item";
 export class Value extends ExpressionItem {
   private value: number
   
-  // bit worried that the type should allow for string as well as this is what the user enters
+  // bit worried that the type should allow for string - as this is what the user enters
   constructor(readonly number: number) {
     super();
     this.value = number

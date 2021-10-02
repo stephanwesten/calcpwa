@@ -21,11 +21,18 @@ export class Expression {
     return this.items[index];
   }
 
-  // for internal usage
+  removeLast() {
+    this.items.pop()
+  }
+
+  // for internal debug usage
   asString(): string {
     var result = ""
     this.items.forEach(item => {
-      result = result + " " + item.asString()
+      if (result != "") {
+        result += " "
+      } 
+      result = result + item.asString()
     })
     if (this.outcome) {
       result += " = " + this.outcome

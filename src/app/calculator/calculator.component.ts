@@ -42,6 +42,7 @@ export class CalculatorComponent implements OnInit {
     return this.expression.asDisplay()
   }
 
+  // rename: this is not a check, but some kind of reset
   checkStateDigit() {
     if (this.expressionComplete) {
       this.expressionComplete = false
@@ -58,17 +59,17 @@ export class CalculatorComponent implements OnInit {
   clickOperator(operator: string) {
     // determine whether the user wants to use the outcome of the previous calculation
     // to start a new calculation
-    //TODO: if expression would have an outcome property, we could use that to check
-    // whether it is complete or not
+    //TODO: use expression  outcome property to check whether it is complete or not
     if (this.expressionComplete) {
       this.expressionComplete = false
       this.expression = new Expression
-      // TODO: instead of storing the value of terminal, we need to store the last calc value
-      // perhaps we can ask the previous expression for its outcome
       this.expression.add(new Value(Number(this.terminal)))
       this.expression.add(new Operator(operator))
       this.terminal = ""
     } else {
+      if (this.terminal == "") {
+        console.log("internal error, terminal is empty")
+      }
       this.expression.add(new Value(Number(this.terminal)))
       this.expression.add(new Operator(operator))
       this.terminal = ""  
@@ -110,6 +111,7 @@ export class CalculatorComponent implements OnInit {
     if (!this.expressionComplete) {
       this.expression.add(new Value(Number(this.terminal)))
       console.log("expression=", this.expression.asString())
+      // this is tricky; the debug representation asString() is not necessarily something that can be parsed and evaluated
       var expr = this.parser.parse(this.expression.asString())
       var result = expr.evaluate()
       this.terminal = result.toString()
@@ -120,6 +122,19 @@ export class CalculatorComponent implements OnInit {
       console.log("click equal ignored")
     }
   }
+
+  clickDelete() {
+    // to support a delete that includes operators we need to keep a log of events
+    // with each event we store the current state so we can easily restore
+    if (this.terminal == "") {
+        console.log("ignore delete")
+    } else if (this.terminal == "0.") {
+      this.terminal = ""
+    } else {
+      this.terminal = this.terminal.substr(0, this.terminal.length-1)
+    }
+  }
+
 
   clickClear() {
     this.expression = new Expression
@@ -132,7 +147,7 @@ export class CalculatorComponent implements OnInit {
     this.clickDigit(2)
     this.clickEqual()
     this.clickOperator("+")
-    this.clickDigit(5)
+    this.clickDigit(3.5)
     this.clickEqual()
   }
 
