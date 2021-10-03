@@ -67,12 +67,18 @@ export class CalculatorComponent implements OnInit {
       this.expression.add(new Operator(operator))
       this.terminal = ""
     } else {
+      // check if we should override the previous operator
       if (this.terminal == "") {
-        console.log("internal error, terminal is empty")
+        if (this.expression.size() > 1) {
+          this.expression.removeLast()
+          this.expression.add(new Operator(operator))    
+        }
+      } else {  
+        // most common case: add the value with the operator 
+        this.expression.add(new Value(Number(this.terminal)))
+        this.expression.add(new Operator(operator))
+        this.terminal = ""  
       }
-      this.expression.add(new Value(Number(this.terminal)))
-      this.expression.add(new Operator(operator))
-      this.terminal = ""  
     }
   }
 

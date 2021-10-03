@@ -48,6 +48,17 @@ describe('CalculatorComponent', () => {
     expect(component.terminal).toEqual("4000");
   })
 
+  it('override operator', () => {
+    component.clickDigit(2);
+    component.clickOperator("*");
+    component.clickOperator("+");
+    component.clickDigit(5);
+    component.clickEqual();
+    expect(component.expression.asString()).toEqual("2 + 5 = 7");
+    expect(component.terminal).toEqual("7");
+
+  })
+
   it('delete char', () => {
     component.clickDigit(2);
     component.clickDelete()
