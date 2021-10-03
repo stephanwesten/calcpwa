@@ -31,6 +31,13 @@ expr-eval
   npm install --save @types/expr-eval
   
 
+Karma
+-----
+When the tests gives errors like 'blablba is not a known element' then
+to find the right spec.ts file add the "schemas: [NO_ERRORS_SCHEMA]" to configureTestingModule
+when the right file is found add the component or stub the component
+
+
 ------
 
 # CalcPwa
