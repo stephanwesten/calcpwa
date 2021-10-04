@@ -12,46 +12,32 @@
         <div class="col col-smaller"><button class="calculator-btn" ng-click="clickOperator('/')">/</button></div>
       </div> -->
 
+    <mat-grid-list cols="4" rowHeight="100px" class="gridlist">
+          <mat-grid-tile [colspan]="4" [rowspan]="1"><div class="expression">{{displayExpression()}}</div></mat-grid-tile>
+          <mat-grid-tile [colspan]="4" [rowspan]="1"><div class="terminal">{{displayTerminal()}}</div></mat-grid-tile>
 
+          <mat-grid-tile><button mat-stroked-button (click)="clickClear()">Clear</button></mat-grid-tile>
+          <mat-grid-tile><button mat-stroked-button (click)="clickDelete()">⌫</button></mat-grid-tile>
+          <mat-grid-tile></mat-grid-tile>
+          <mat-grid-tile><button mat-stroked-button (click)="clickOperator('/')">/</button></mat-grid-tile>
 
-      <div class="calc-container">
-        <div class="calc-row">
-          <div class="calc-col">
-            <div class="expression">
-              <pre>{{displayExpression()}}</pre>
-            </div>        
-          </div>
-        </div>
-
-      <div class="calc-row">
-          <div class="calc-col">
-            <div class="terminal">
-              <pre>{{displayTerminal()}}</pre>
-            </div>        
-          </div>
-        </div>
-
-          <div class="calc-row row-cols-4">
-            <div class="calc-col"><button class="calc-btn" (click)="clickClear()">Clear</button></div>
-            <div class="calc-col"><button class="calc-btn" (click)="clickDelete()">⌫</button></div>
-            <div class="calc-col"></div>
-            <div class="calc-col"><button class="calc-btn" (click)="clickOperator('/')">/</button></div>
-
-            <div class="calc-col"><button class="calc-btn" (click)="clickDigit(7)">7</button></div>
-            <div class="calc-col"><button class="calc-btn" (click)="clickDigit(8)">8</button></div>
-            <div class="calc-col"><button class="calc-btn" (click)="clickDigit(9)">9</button></div>
-            <div class="calc-col"><button class="calc-btn" (click)="clickOperator('*')">x</button></div>
-            <div class="calc-col"><button class="calc-btn" (click)="clickDigit(4)">4</button></div>
-            <div class="calc-col"><button class="calc-btn" (click)="clickDigit(5)">5</button></div>
-            <div class="calc-col"><button class="calc-btn" (click)="clickDigit(6)">6</button></div>
-            <div class="calc-col"><button class="calc-btn" (click)="clickOperator('-')">-</button></div>
-            <div class="calc-col"><button class="calc-btn" (click)="clickDigit(1)">1</button></div>
-            <div class="calc-col"><button class="calc-btn" (click)="clickDigit(2)">2</button></div>
-            <div class="calc-col"><button class="calc-btn" (click)="clickDigit(3)">3</button></div>
-            <div class="calc-col"><button class="calc-btn" (click)="clickOperator('+')">+</button></div>
-            <div class="calc-col"><button class="calc-btn" (click)="clickDigit(0)">0</button></div>
-            <div class="calc-col"><button class="calc-btn" (click)="clickDecSep()">.</button></div>
-            <div class="calc-col"></div>
-            <div class="calc-col"><button class="calc-btn" (click)="clickEqual()">=</button></div>
-        </div>
-      </div>
+          <mat-grid-tile><button mat-stroked-button (click)="clickDigit(7)">7</button></mat-grid-tile>
+          <mat-grid-tile><button mat-stroked-button (click)="clickDigit(8)">8</button></mat-grid-tile>
+          <mat-grid-tile><button mat-stroked-button (click)="clickDigit(9)">9</button></mat-grid-tile>
+          <mat-grid-tile><button mat-stroked-button (click)="clickOperator('*')">*</button></mat-grid-tile>
+          
+          <mat-grid-tile><button mat-stroked-button (click)="clickDigit(4)">4</button></mat-grid-tile>
+          <mat-grid-tile><button mat-stroked-button (click)="clickDigit(5)">5</button></mat-grid-tile>
+          <mat-grid-tile><button mat-stroked-button (click)="clickDigit(6)">6</button></mat-grid-tile>
+          <mat-grid-tile><button mat-stroked-button (click)="clickOperator('-')">-</button></mat-grid-tile>
+          
+          <mat-grid-tile><button mat-stroked-button (click)="clickDigit(1)">1</button></mat-grid-tile>
+          <mat-grid-tile><button mat-stroked-button (click)="clickDigit(2)">2</button></mat-grid-tile>
+          <mat-grid-tile><button mat-stroked-button (click)="clickDigit(3)">3</button></mat-grid-tile>
+          <mat-grid-tile><button mat-stroked-button (click)="clickOperator('+')">+</button></mat-grid-tile>
+          
+          <mat-grid-tile><button mat-stroked-button (click)="clickDigit(0)">0</button></mat-grid-tile>
+          <mat-grid-tile><button mat-stroked-button (click)="clickDecSep()">.</button></mat-grid-tile>
+          <mat-grid-tile [colspan]="2" ><button mat-stroked-button (click)="clickEqual()">=</button></mat-grid-tile>
+          
+    </mat-grid-list>    

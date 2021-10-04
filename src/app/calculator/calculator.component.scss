@@ -1,56 +1,54 @@
-@import '~bootstrap/scss/bootstrap';
+@use '~@angular/material' as mat;
 
+// .calc-container {
+//     @extend .container;
+//     background-color: #feba51;
+// }
 
-.calc-container {
-    @extend .container;
-    background-color: #feba51;
-}
+// .calc-row {
+//     @extend .row;
+//     // background-color: blue;
+// }
 
-.calc-row {
-    @extend .row;
-    // background-color: blue;
-}
+// .calc-col {
+//   @extend .col;
+//   // background-color: purple;
+//   margin-top: 10px; 
+//   margin-bottom: 10px; 
+// }
 
-.calc-col {
-  @extend .col;
-  // background-color: purple;
-  margin-top: 10px; 
-  margin-bottom: 10px; 
-}
-
-.calc-col-2 {
-  @extend .col-2;
-  background-color: purple;
-  margin-top: 10px; 
-  margin-bottom: 10px; 
+// .calc-col-2 {
+//   @extend .col-2;
+//   background-color: purple;
+//   margin-top: 10px; 
+//   margin-bottom: 10px; 
+// }
+.gridlist {
+  background-color: #feba51;
+  font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+  color: white;
 }
 
 .calc-btn {
-    @extend .btn; 
-    @extend .btn-outline-primary;  
-    @extend .btn-lg;
-    @extend .btn-block;
-    color: #575757;
-    font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
-    background-color: #f8f8f8;  /* bit softer white */
+  font-size: larger;
+  color: primary;
+  font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+  background-color: #f8f8f8;  /* bit softer white */
 }
 
 .terminal {
-    @extend .text-right;
-    @extend .h1;
+    width: 98%;
+    height: 70%;
+    font-size: larger;
+    text-align: right;
     border-radius: 6px;
     padding-top: 15px;
     margin-top: 8px;
     background-color: rgb(15, 15, 16);
-  }
-
-  .terminal pre {
     font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
     color: white;
-    padding: 0 1rem 1rem;
-    margin: 0;
   }
 
-  .expression {
+.expression {
     @extend .terminal;
   }

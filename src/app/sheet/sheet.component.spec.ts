@@ -1,6 +1,6 @@
-//import { NO_ERRORS_SCHEMA } from '@angular/core';
+// import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { MatGridList } from '@angular/material/grid-list';
+import { MatGridList, MatGridTile } from '@angular/material/grid-list';
 
 import { SheetComponent } from './sheet.component';
 
@@ -10,9 +10,8 @@ describe('SheetComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SheetComponent, MatGridList ]
-      // ,
-      // schemas: [NO_ERRORS_SCHEMA]
+      declarations: [ SheetComponent, MatGridList, MatGridTile ],
+      // schemas: [NO_ERRORS_SCHEMA],
     })
     .compileComponents();
   });

@@ -1,3 +1,8 @@
+issues
+- remove bootstrap from package json etc
+
+
+===========================
 Created:
 
 generated using angular cli, added component pwa
@@ -34,8 +39,8 @@ expr-eval
 Karma
 -----
 When the tests gives errors like 'blablba is not a known element' then
-to find the right spec.ts file add the "schemas: [NO_ERRORS_SCHEMA]" to configureTestingModule
-when the right file is found add the component or stub the component
+to find the offending spec.ts file add the "schemas: [NO_ERRORS_SCHEMA]" to configureTestingModule
+when the right file is found add the component (add import and add schema) or stub the component in the ts.spec file
 
 
 ------

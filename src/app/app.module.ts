@@ -10,6 +10,7 @@ import { environment } from '../environments/environment';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SheetComponent } from './sheet/sheet.component';
 import { CalculatorComponent } from './calculator/calculator.component';
+import { MatButton, MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { CalculatorComponent } from './calculator/calculator.component';
   imports: [
     BrowserModule,
     MatTabsModule,
+    MatButtonModule,
     BrowserAnimationsModule,
     MatGridListModule,
     ServiceWorkerModule.register('ngsw-worker.js', {

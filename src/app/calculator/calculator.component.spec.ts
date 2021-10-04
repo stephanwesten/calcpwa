@@ -1,6 +1,8 @@
+// import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CalculatorComponent } from './calculator.component';
+import { MatGridList, MatGridTile } from '@angular/material/grid-list';
 
 describe('CalculatorComponent', () => {
   let component: CalculatorComponent;
@@ -8,7 +10,8 @@ describe('CalculatorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CalculatorComponent ]
+      declarations: [ CalculatorComponent, MatGridList, MatGridTile ],
+      // schemas: [NO_ERRORS_SCHEMA],
     })
     .compileComponents();
   });
