@@ -1,39 +1,9 @@
-@use '~@angular/material' as mat;
 
-// .calc-container {
-//     @extend .container;
-//     background-color: #feba51;
-// }
 
-// .calc-row {
-//     @extend .row;
-//     // background-color: blue;
-// }
-
-// .calc-col {
-//   @extend .col;
-//   // background-color: purple;
-//   margin-top: 10px; 
-//   margin-bottom: 10px; 
-// }
-
-// .calc-col-2 {
-//   @extend .col-2;
-//   background-color: purple;
-//   margin-top: 10px; 
-//   margin-bottom: 10px; 
-// }
 .gridlist {
   background-color: #feba51;
   font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
   color: white;
-}
-
-.calc-btn {
-  font-size: larger;
-  color: primary;
-  font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
-  background-color: #f8f8f8;  /* bit softer white */
 }
 
 .terminal {
