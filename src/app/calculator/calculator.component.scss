@@ -1,6 +1,14 @@
 
+.mat-stroked-button{
+  height: 80%;
+  width: 90%;
+  font-size: 4vw;
+}
 
 .gridlist {
+  display: flex;
+  justify-content: center;
+  width: 90%;
   background-color: #feba51;
   font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
   color: white;
@@ -9,7 +17,7 @@
 .terminal {
     width: 98%;
     height: 70%;
-    font-size: larger;
+    font-size: 4vw;
     text-align: right;
     border-radius: 6px;
     padding-top: 15px;
