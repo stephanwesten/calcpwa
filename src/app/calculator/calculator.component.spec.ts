@@ -1,12 +1,16 @@
 // import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { CalculatorComponent } from './calculator.component';
 import { MatGridList, MatGridTile } from '@angular/material/grid-list';
 import { CalcService } from '../calc.service';
+import { Sheet } from '../model/sheet';
 
 
-
+class CalcServiceMock {
+  getCurrentSheet() : Sheet {
+    return new Sheet
+  }
+}
 
 describe('CalculatorComponent', () => {
   let component: CalculatorComponent;
@@ -14,8 +18,12 @@ describe('CalculatorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CalculatorComponent, MatGridList, MatGridTile ],
+      declarations: [ MatGridList, MatGridTile ],
       // schemas: [NO_ERRORS_SCHEMA],
+    })
+    .overrideComponent(
+      CalculatorComponent,
+      {set: {providers: [{provide: CalcService, useClass: CalcServiceMock }]}
     })
     .compileComponents();
   });

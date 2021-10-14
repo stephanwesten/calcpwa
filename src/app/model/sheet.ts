@@ -1,6 +1,15 @@
 import { Expression } from "./expression";
+import {
+  JsonProperty,
+  Serializable,
+  deserialize,
+  serialize
+} from 'typescript-json-serializer';
 
+@Serializable()
 export class Sheet {
+
+  @JsonProperty({ type: Expression })
   readonly items: Array<Expression>;
 
   constructor() {

@@ -1,21 +1,30 @@
 import { ExpressionItem } from "./expression-item";
+import {
+  JsonProperty,
+  Serializable,
+  deserialize,
+  serialize
+} from 'typescript-json-serializer';
 
 // naming this class Number is not possible
+@Serializable()
 export class Value extends ExpressionItem {
-  private value: number
   
   // bit worried that the type should allow for string - as this is what the user enters
-  constructor(readonly number: number) {
+  constructor(
+    @JsonProperty()
+    readonly number: number
+  ) {
     super();
-    this.value = number
+    this.number = number
   }
 
   get(): number {
-    return this.value
+    return this.number
   }
 
   asString(): string {
-    return this.value.toString()
+    return this.number.toString()
   }
 
 }

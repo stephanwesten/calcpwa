@@ -1,6 +1,14 @@
 import { ExpressionItem } from "./expression-item";
+import {
+  JsonProperty,
+  Serializable,
+  deserialize,
+  serialize
+} from 'typescript-json-serializer';
 
+@Serializable()
 export class Operator extends ExpressionItem {
+  @JsonProperty()
   private operator: string
 
   constructor(operator: string) {

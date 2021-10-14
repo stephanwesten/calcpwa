@@ -1,7 +1,25 @@
 import { ExpressionItem } from "./expression-item";
+import {
+  JsonProperty,
+  Serializable,
+  deserialize,
+  serialize
+} from 'typescript-json-serializer';
+import { Value } from "./value";
+import { Operator } from "./operator";
 
+// this function determines the subtype
+const ValueOrOperand = (exprItem: any) => {
+  return exprItem && exprItem['number'] !== undefined
+      ? Value
+      : Operator;
+};
+
+@Serializable()
 export class Expression {
+  @JsonProperty({type: ExpressionItem, predicate: ValueOrOperand })
   private items: Array<ExpressionItem>;
+  @JsonProperty()
   outcome?: number;
 
   constructor() {
