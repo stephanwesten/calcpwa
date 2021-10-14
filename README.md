@@ -48,6 +48,7 @@ Cloudflare
 
 I created by hand kv store: wrangler kv:namespace create "calcpwa"
 
+To retrieve the data from KV store:
 wrangler kv:key get --binding=calcpwa test123
 
 curl https://calc-pwa.saw.workers.dev/kv

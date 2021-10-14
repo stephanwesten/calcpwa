@@ -16,7 +16,7 @@ describe('sheet', () => {
         sheet.add(expr)
         var json: string
         json = serialize(sheet);
-        const jsonString = JSON.stringify(json, null, 4);
+        const jsonString = JSON.stringify(json, null, 2);
         console.log(jsonString.toString())
         expect(jsonString).toContain('4')
 

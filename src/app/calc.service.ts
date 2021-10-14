@@ -5,6 +5,7 @@ import { Sheet } from './model/sheet';
 
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
+import { deserialize, serialize } from 'typescript-json-serializer';
 
 @Injectable({
   providedIn: 'root'
@@ -24,10 +25,7 @@ export class CalcService {
   getFromKVStore() {
     this.http.get<Sheet>(this.kvUrl).subscribe(
       data => {
-        var sheet: Sheet
-        sheet = data 
-        console.log('get from kv succeeded, data: ', data)
-        Object.assign(this.currentSheet, sheet)
+        this.currentSheet = deserialize<Sheet>(data, Sheet)
         console.log('get from kv succeeded, sheet: ', this.currentSheet)
       },
       error => console.log('get from kv failed, error: ', error)
@@ -36,7 +34,9 @@ export class CalcService {
 
   setToKVStore() {
     console.log('about to store in kv, sheet: ', this.currentSheet)
-    this.http.put(this.kvUrl, this.currentSheet).subscribe(
+    var json = serialize(this.currentSheet);
+    //const jsonString = JSON.stringify(json, null, 2);
+    this.http.put(this.kvUrl, json).subscribe(
       data => console.log('set from kv ok, data: ', data),
       error => console.log('set from kv failed, error: ', error)
     )
