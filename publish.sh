@@ -1,6 +1,6 @@
 #!/bin/bash 
 set -e
-ng test
+# ng test --watch=false
 timestamp=`date "+%Y-%m-%dT%H:%M";`
 echo "export const BuildTimeFile = { buildtime:new Date('${timestamp}') };" | tee src/environments/buildtime-file.ts
 ng build  

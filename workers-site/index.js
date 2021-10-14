@@ -1,4 +1,5 @@
 import { getAssetFromKV, mapRequestToAsset } from '@cloudflare/kv-asset-handler'
+import { request } from 'http'
 
 /**
  * The DEBUG flag will do two things that help during development:
@@ -7,7 +8,7 @@ import { getAssetFromKV, mapRequestToAsset } from '@cloudflare/kv-asset-handler'
  * 2. we will return an error message on exception in your Response rather
  *    than the default 404.html page.
  */
-const DEBUG = false
+const DEBUG = true
 
 addEventListener('fetch', event => {
   try {
@@ -20,13 +21,14 @@ addEventListener('fetch', event => {
         }),
       )
     }
-    event.respondWith(new Response('Internal Error', { status: 500 }))
+    event.respondWith(new Response('Internal Error from calcpwa', { status: 500 }))
   }
 })
 
 async function handleEvent(event) {
   const url = new URL(event.request.url)
   let options = {}
+  console.log("*** handleEvent: ", url)
 
   /**
    * You can add custom logic to how we fetch your assets
@@ -41,6 +43,38 @@ async function handleEvent(event) {
         bypassCache: true,
       };
     }
+    if (url.pathname.endsWith("kv")) {
+      // note: calcpwa is defined in the wrangler.toml file as kvstore
+      console.log("** kv operation, method: ", event.request.method)
+      if (event.request.method === "PUT") {
+        console.log("** store key test123")
+        const body = await event.request.text()
+        try {
+          await calcpwa.put("test123", body)
+          return new Response(body, { status: 200 })
+        } catch (err) {
+          console.log("** set key test123 raised error: ", err)
+          return new Response(err, { status: 500 })
+        }  
+      } else {
+        // retrieve from KV
+        try {
+          let value = await calcpwa.get("test123")
+          if (value) {
+            console.log("** retrieved key test123")
+            return new Response(value, { status: 200 })
+          } else {
+            console.log("** key test123 not found ")
+            return new Response("{}", { status: 404 })
+          }  
+        } catch (err) {
+          console.log("** get key test123 raised error: ", err)
+          return new Response(err, { status: 500 })
+        }  
+      }
+    }
+
+    // return angular application
     const page = await getAssetFromKV(event, options);
 
     // allow headers to be altered

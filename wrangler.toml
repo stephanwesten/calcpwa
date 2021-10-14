@@ -3,8 +3,11 @@ type = "webpack"
 route = 'calc-pwa'
 zone_id = ''
 usage_model = ''
-compatibility_flags = []
+compatibility_date = "2021-10-08"
 workers_dev = true
+kv_namespaces = [ 
+	 { binding = "calcpwa", id = "11e4a799014f4de8add3b1b7abc1ce3d" }
+]
 [site]
 bucket = "./dist/calc-pwa"
 entry-point = "workers-site"

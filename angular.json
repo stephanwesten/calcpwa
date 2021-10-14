@@ -78,7 +78,8 @@
               "browserTarget": "calc-pwa:build:production"
             },
             "development": {
-              "browserTarget": "calc-pwa:build:development"
+              "browserTarget": "calc-pwa:build:development",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"

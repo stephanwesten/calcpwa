@@ -43,6 +43,31 @@ to find the offending spec.ts file add the "schemas: [NO_ERRORS_SCHEMA]" to conf
 when the right file is found add the component (add import and add schema) or stub the component in the ts.spec file
 
 
+Cloudflare
+============
+
+I created by hand kv store: wrangler kv:namespace create "calcpwa"
+
+wrangler kv:key get --binding=calcpwa test123
+
+curl https://calc-pwa.saw.workers.dev/kv
+curl -X PUT -H "Content-Type: application/json" -d '{"sheet":""}' https://calc-pwa.saw.workers.dev/kv
+
+
+Update wrangler with: npm i @cloudflare/wrangler -g
+currently on v1.19.3
+note that there is a compatibility-date in wrangler.toml that needs an update in 2022
+
+Debugging workers
+-----------------
+open two terminals:
+$ wrangler tail
+$ curl https://calc-pwa.saw.workers.dev/kv
+
+
+
+
+
 ------
 
 # CalcPwa

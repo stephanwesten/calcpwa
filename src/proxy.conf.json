@@ -1,0 +1,8 @@
+{
+    "/cf": {
+        "target": "https://calc-pwa.saw.workers.dev",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
+    }
+}

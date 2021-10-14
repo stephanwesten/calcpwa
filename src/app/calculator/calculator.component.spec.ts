@@ -3,6 +3,10 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CalculatorComponent } from './calculator.component';
 import { MatGridList, MatGridTile } from '@angular/material/grid-list';
+import { CalcService } from '../calc.service';
+
+
+
 
 describe('CalculatorComponent', () => {
   let component: CalculatorComponent;

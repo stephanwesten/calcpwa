@@ -123,7 +123,7 @@ export class CalculatorComponent implements OnInit {
       this.terminal = result.toString()
       this.expressionComplete = true
       this.expression.outcome = result
-      this.calcService.currentSheet.add(this.expression)
+      this.calcService.getCurrentSheet().add(this.expression)
     } else {
       console.log("click equal ignored")
     }

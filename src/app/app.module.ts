@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -20,6 +21,7 @@ import { MatButton, MatButtonModule } from '@angular/material/button';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     MatTabsModule,
     MatButtonModule,
     BrowserAnimationsModule,
