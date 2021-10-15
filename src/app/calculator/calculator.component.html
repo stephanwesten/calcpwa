@@ -5,19 +5,24 @@
         <div class="col col-smaller"><button class="calculator-btn" ng-click="clickPlusMinOperator()">±</button></div>
       </div> -->
 
-    <mat-grid-list cols="4" rowHeight="100px" class="gridlist">
+    <mat-grid-list cols="4" rowHeight="7vw" class="gridlist">
           <mat-grid-tile [colspan]="4" [rowspan]="1"><div class="expression">{{displayExpression()}}</div></mat-grid-tile>
           <mat-grid-tile [colspan]="4" [rowspan]="1"><div class="terminal">{{displayTerminal()}}</div></mat-grid-tile>
 
           <mat-grid-tile><button mat-stroked-button (click)="clickClear()">Clear</button></mat-grid-tile>
           <mat-grid-tile><button mat-stroked-button (click)="clickDelete()">⌫</button></mat-grid-tile>
           <mat-grid-tile></mat-grid-tile>
-          <mat-grid-tile><button mat-stroked-button (click)="clickOperator('/')">/</button></mat-grid-tile>
+          <mat-grid-tile></mat-grid-tile>
+
+          <mat-grid-tile><button mat-stroked-button (click)="clickBracket('(')">(</button></mat-grid-tile>
+          <mat-grid-tile><button mat-stroked-button (click)="clickBracket(')')">)</button></mat-grid-tile>
+          <mat-grid-tile></mat-grid-tile>
+          <mat-grid-tile><button mat-stroked-button (click)="clickOperator('/')">÷</button></mat-grid-tile>
 
           <mat-grid-tile><button mat-stroked-button (click)="clickDigit(7)">7</button></mat-grid-tile>
           <mat-grid-tile><button mat-stroked-button (click)="clickDigit(8)">8</button></mat-grid-tile>
           <mat-grid-tile><button mat-stroked-button (click)="clickDigit(9)">9</button></mat-grid-tile>
-          <mat-grid-tile><button mat-stroked-button (click)="clickOperator('*')">*</button></mat-grid-tile>
+          <mat-grid-tile><button mat-stroked-button (click)="clickOperator('*')">x</button></mat-grid-tile>
           
           <mat-grid-tile><button mat-stroked-button (click)="clickDigit(4)">4</button></mat-grid-tile>
           <mat-grid-tile><button mat-stroked-button (click)="clickDigit(5)">5</button></mat-grid-tile>

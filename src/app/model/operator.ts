@@ -2,8 +2,6 @@ import { ExpressionItem } from "./expression-item";
 import {
   JsonProperty,
   Serializable,
-  deserialize,
-  serialize
 } from 'typescript-json-serializer';
 
 @Serializable()

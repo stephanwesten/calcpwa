@@ -59,6 +59,7 @@ describe('CalculatorComponent', () => {
     component.clickOperator("*");
     component.clickDigit(2);
     component.clickEqual();
+    // todo check asDisplay instead of asString
     expect(component.expression.asString()).toEqual("2000 * 2 = 4000");
     expect(component.terminal).toEqual("4000");
   })
@@ -73,6 +74,38 @@ describe('CalculatorComponent', () => {
     expect(component.terminal).toEqual("7");
 
   })
+
+  it('brackets (2+4)', () => {
+    component.clickBracket("(");
+    component.clickDigit(2);
+    component.clickOperator("+");
+    component.clickDigit(4);
+    component.clickBracket(")");
+    component.clickEqual();
+    expect(component.expression.asDisplay()).toEqual("(2 + 4)");
+    expect(component.expression.outcome).toEqual(6);
+    expect(component.terminal).toEqual("6");
+    component.clickOperator("*");
+    component.clickDigit(3);
+    component.clickEqual();
+    expect(component.terminal).toEqual("18");
+  })
+
+  it('brackets (2+4)*3', () => {
+    component.clickBracket("(");
+    component.clickDigit(2);
+    component.clickOperator("+");
+    component.clickDigit(4);
+    component.clickBracket(")");
+    expect(component.expression.asDisplay()).toEqual("(2 + 4)");
+    component.clickOperator("*");
+    expect(component.expression.asDisplay()).toEqual("(2 + 4) x");
+    component.clickDigit(3);
+    component.clickEqual();
+    expect(component.expression.asDisplay()).toEqual("(2 + 4) x 3");
+    expect(component.expression.outcome).toEqual(18);
+  })
+
 
   it('delete char', () => {
     component.clickDigit(2);

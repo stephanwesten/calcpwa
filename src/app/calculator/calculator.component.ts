@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import * as expreval from 'expr-eval';
-import { Expression } from '../model/expression';
+import { Expression, ExprItemSubType } from '../model/expression';
 import { Operator } from '../model/operator';
 import { Value } from '../model/value';
 import { CalcService } from '../calc.service';
+import { Bracket } from '../model/bracket';
 
 
 @Component({
@@ -70,8 +71,15 @@ export class CalculatorComponent implements OnInit {
       // check if we should override the previous operator
       if (this.terminal == "") {
         if (this.expression.size() > 1) {
-          this.expression.removeLast()
-          this.expression.add(new Operator(operator))    
+          if (ExprItemSubType(this.expression.last()) == Operator) {
+            // override the last operator
+            this.expression.removeLast()
+            this.expression.add(new Operator(operator))    
+          } else {
+            // last item was a bracket - we could check this to be sure
+            this.expression.add(new Operator(operator))
+            this.terminal = ""      
+          }
         }
       } else {  
         // most common case: add the value with the operator 
@@ -89,6 +97,16 @@ export class CalculatorComponent implements OnInit {
       this.terminal = this.terminal + "."
     } else {
       console.log("ignore decimal separator")
+    }
+  }
+
+  clickBracket(bracket: string) {
+    if (bracket == "(") {
+      this.expression.add(new Bracket("("))   
+    } else {
+      this.expression.add(new Value(Number(this.terminal)))
+      this.expression.add(new Bracket(")"))   
+      this.terminal = ""  
     }
   }
 
@@ -114,8 +132,13 @@ export class CalculatorComponent implements OnInit {
   }
 
   clickEqual() {
+    // todo: show an error message if the brackets don't match
     if (!this.expressionComplete) {
-      this.expression.add(new Value(Number(this.terminal)))
+      if (ExprItemSubType(this.expression.last()) == Bracket) {
+        // ignore
+      } else {      
+        this.expression.add(new Value(Number(this.terminal)))
+      }
       console.log("expression=", this.expression.asString())
       // this is tricky; the debug representation asString() is not necessarily something that can be parsed and evaluated
       var expr = this.parser.parse(this.expression.asString())

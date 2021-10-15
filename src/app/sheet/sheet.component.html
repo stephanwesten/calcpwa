@@ -4,7 +4,7 @@
 </div>
 
 
-<mat-grid-list cols="5" rowHeight="100px" class="gridlist">
+<mat-grid-list cols="5" rowHeight="7vw" class="gridlist">
     <ng-container *ngFor="let expression of getExpressions()">
         <mat-grid-tile [colspan]="3" [rowspan]="1">{{expression.asDisplay()}}</mat-grid-tile>
         <mat-grid-tile [colspan]="1" [rowspan]="1"> = </mat-grid-tile>
