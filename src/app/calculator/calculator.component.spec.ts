@@ -59,8 +59,7 @@ describe('CalculatorComponent', () => {
     component.clickOperator("*");
     component.clickDigit(2);
     component.clickEqual();
-    // todo check asDisplay instead of asString
-    expect(component.expression.asString()).toEqual("2000 * 2 = 4000");
+    expect(component.expression.asDisplay()).toEqual("2000 x 2");
     expect(component.terminal).toEqual("4000");
   })
 

@@ -94,8 +94,10 @@ export class Expression {
     var result = ""
     this.items.forEach(item => {
       if (result != "") {
-        if (result != "(" && item.asString()!=")") {
-          result += " "
+        if (result.slice(result.length - 1) != "(" ) {
+          if (item.asString()!=")") {
+            result += " "
+          }
         }
       } 
       if (item.asString() == "*") {
