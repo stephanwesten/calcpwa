@@ -1,14 +1,19 @@
 // import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatGridList, MatGridTile } from '@angular/material/grid-list';
+import { Router } from '@angular/router';
 import { SheetComponent } from './sheet.component';
 import { CalcService } from '../calc.service';
 import { Sheet } from '../model/sheet';
 
-class CalcServiceMock{
+class CalcServiceMock {
   getCurrentSheet() : Sheet {
     return new Sheet
   }
+}
+
+class RouterMock {
+  public url = "https://calcshare"
 }
 
 describe('SheetComponent', () => {
@@ -22,7 +27,10 @@ describe('SheetComponent', () => {
     })
     .overrideComponent(
       SheetComponent,
-      {set: {providers: [{provide: CalcService, useClass: CalcServiceMock }]}
+      {set: {providers: [
+        {provide: CalcService, useClass: CalcServiceMock },
+        {provide: Router, useClass: RouterMock },
+      ]}
     })
 
     .compileComponents();

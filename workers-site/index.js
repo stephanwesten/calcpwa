@@ -25,6 +25,13 @@ addEventListener('fetch', event => {
   }
 })
 
+var genID = function () {
+  // Math.random should be unique because of its seeding algorithm.
+  // Convert it to base 36 (numbers + letters), and grab the first 9 characters
+  // after the decimal.
+  return Math.random().toString(36).substr(2, 9);
+};
+
 async function handleEvent(event) {
   const url = new URL(event.request.url)
   let options = {}
@@ -37,23 +44,36 @@ async function handleEvent(event) {
   // options.mapRequestToAsset = handlePrefix(/^\/docs/)
 
   try {
-    if (DEBUG) {
+    if (DEBUG) {      
       // customize caching
       options.cacheControl = {
         bypassCache: true,
       };
     }
-    if (url.pathname.endsWith("kv")) {
-      // note: calcpwa is defined in the wrangler.toml file as kvstore
+    console.log("** pathname: ", url.pathname)
+    if (url.pathname.startsWith("/cf/kv")) {
+      // note: 'calcpwa' is defined in the wrangler.toml file as kvstore
       console.log("** kv operation, method: ", event.request.method)
       if (event.request.method === "PUT") {
-        console.log("** store key test123")
+        const uid = "sheet/" + genID()
+        console.log("** store key: " + uid)
         const body = await event.request.text()
         try {
-          await calcpwa.put("test123", body)
-          return new Response(body, { status: 200 })
+          // two weeks expiration
+          await calcpwa.put(uid, body, {expirationTtl: 1249920})
+          // return generated id
+          const data = {
+            uid: uid
+          }
+          const json = JSON.stringify(data, null, 2)        
+          return new Response(json, {
+            status: 200,
+            headers: {
+              "content-type": "application/json;charset=UTF-8"
+            },
+          })
         } catch (err) {
-          console.log("** set key test123 raised error: ", err)
+          console.log("** set key raised error: ", uid, err)
           return new Response(err, { status: 500 })
         }  
       } else {

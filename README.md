@@ -46,6 +46,8 @@ when the right file is found add the component (add import and add schema) or st
 Cloudflare
 ============
 
+link: /sheet/b6i9f4nqm
+
 I created by hand kv store: wrangler kv:namespace create "calcpwa"
 
 To retrieve the data from KV store:

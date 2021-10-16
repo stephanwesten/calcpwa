@@ -12,6 +12,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SheetComponent } from './sheet/sheet.component';
 import { CalculatorComponent } from './calculator/calculator.component';
 import { MatButton, MatButtonModule } from '@angular/material/button';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,10 @@ import { MatButton, MatButtonModule } from '@angular/material/button';
     MatButtonModule,
     BrowserAnimationsModule,
     MatGridListModule,
+    RouterModule.forRoot([
+      { path: '', component: CalculatorComponent },
+      { path: 'sheet/:sheetId', component: SheetComponent },  //should be plural: sheets
+    ]),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the app is stable
