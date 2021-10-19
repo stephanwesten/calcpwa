@@ -1,10 +1,9 @@
       <!-- <div class="row calc-row">
       <div class="row calc-row">
-        <div class="col col-smaller"><button class="calculator-btn calculator-btn-small-text" ng-click="clickOpenBracket()">(</button></div>
-        <div class="col col-smaller"><button class="calculator-btn calculator-btn-small-text" ng-click="clickCloseBracket()">)</button></div>
         <div class="col col-smaller"><button class="calculator-btn" ng-click="clickPlusMinOperator()">±</button></div>
       </div> -->
 
+<div class="calculator">     
     <mat-grid-list cols="4" rowHeight="7vw" class="gridlist">
           <mat-grid-tile [colspan]="4" [rowspan]="1"><div class="expression">{{displayExpression()}}</div></mat-grid-tile>
           <mat-grid-tile [colspan]="4" [rowspan]="1"><div class="terminal">{{displayTerminal()}}</div></mat-grid-tile>
@@ -39,3 +38,4 @@
           <mat-grid-tile [colspan]="2" ><button mat-stroked-button (click)="clickEqual()">=</button></mat-grid-tile>
           
     </mat-grid-list>    
+</div>

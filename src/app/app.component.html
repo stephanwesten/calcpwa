@@ -1,19 +1,57 @@
+<div> 
+  <mat-toolbar color="primary">
+    <div fxShow="true" fxHide.gt-sm="true">
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
 
+    <a mat-button class="companyName" routerLink="/">
+      <span>Calcgems</span>
+    </a>
+    <span class="example-spacer"></span>
+    <div fxShow="true" fxHide.lt-md="true">
+      <a mat-button routerLink="/calc">Calculator</a>
+      <a mat-button routerLink="/sheets/:sheetId">Sheets</a>
+      <a mat-button routerLink="/contact">Contact</a>
+    </div>
 
-<div class="content" role="main">
-  
-  <mat-tab-group>
-    <mat-tab label="Calulator"> 
-      <app-calculator></app-calculator>
-    </mat-tab>
-    <mat-tab label="Sheet"> 
-      <app-sheet></app-sheet>
-    </mat-tab>
-  </mat-tab-group>
+  </mat-toolbar>
+  <mat-sidenav-container fxFlexFill class="example-container">
+
+    <mat-sidenav color="primary" #sidenav fxLayout="column" mode="over"  opened="false" fxHide.gt-sm="true">
+      <div fxLayout="column">
+        <a mat-button routerLink="/about-us">About us</a>
+        <a mat-button routerLink="/prices">Prices</a>
+        <a mat-button routerLink="/start-page">Start page</a>
+        <a mat-button routerLink="/offer">Offer</a>
+        <a mat-button routerLink="/contact">Contact</a>
+      </div>
+    </mat-sidenav>
+
+    <mat-sidenav-content fxFlexFill>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 </div>
 
-<router-outlet></router-outlet>
+<!-- <div class="toolbar" role="banner">
+  <button mat-stroked-button (click)="clickShare()">Share</button>
+  <button mat-stroked-button (click)="clickRetrieve()">Retrieve</button>
+</div>
 
-<footer>
+<div class="content" role="main"> -->
+  
+  <!-- <nav mat-tab-nav-bar>
+    <a mat-tab-link
+      *ngFor="let link of navLinks"
+      [routerLink]="link.link"
+      routerLinkActive #rla="routerLinkActive"
+      [active]="rla.isActive">{{link.label}}
+      </a>
+  </nav>
+  <router-outlet></router-outlet> -->
+
+  <footer>
     <div style="color:grey;font-size: 10px;">{{buildtimestamp | date:'y-MM-d HH:MM' }}</div>
 </footer>

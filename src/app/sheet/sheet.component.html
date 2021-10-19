@@ -1,9 +1,3 @@
-<div class="toolbar" role="banner">
-    <button mat-stroked-button (click)="clickShare()">Share</button>
-    <button mat-stroked-button (click)="clickRetrieve()">Retrieve</button>
-</div>
-
-
 <mat-grid-list cols="5" rowHeight="7vw" class="gridlist">
     <ng-container *ngFor="let expression of getExpressions()">
         <mat-grid-tile [colspan]="3" [rowspan]="1">{{expression.asDisplay()}}</mat-grid-tile>
