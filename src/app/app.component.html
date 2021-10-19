@@ -12,7 +12,7 @@
     <span class="example-spacer"></span>
     <div fxShow="true" fxHide.lt-md="true">
       <a mat-button routerLink="/calc">Calculator</a>
-      <a mat-button routerLink="/sheets/:sheetId">Sheets</a>
+      <a mat-button routerLink="/sheets">Sheets</a>
       <a mat-button routerLink="/contact">Contact</a>
     </div>
 
@@ -21,10 +21,6 @@
 
     <mat-sidenav color="primary" #sidenav fxLayout="column" mode="over"  opened="false" fxHide.gt-sm="true">
       <div fxLayout="column">
-        <a mat-button routerLink="/about-us">About us</a>
-        <a mat-button routerLink="/prices">Prices</a>
-        <a mat-button routerLink="/start-page">Start page</a>
-        <a mat-button routerLink="/offer">Offer</a>
         <a mat-button routerLink="/contact">Contact</a>
       </div>
     </mat-sidenav>
@@ -53,5 +49,5 @@
   <router-outlet></router-outlet> -->
 
   <footer>
-    <div style="color:grey;font-size: 10px;">{{buildtimestamp | date:'y-MM-d HH:MM' }}</div>
+    <div style="color:rgb(128, 128, 128);font-size: 10px;">{{buildtimestamp | date:'y-MM-d HH:MM' }}</div>
 </footer>

@@ -9,31 +9,11 @@ import { CalcService } from './calc.service';
   styleUrls: ['./app.component.scss'],
 })
 
-
 export class AppComponent {
-  title = 'calc-pwa';
+  title = 'calcgems';
   readonly buildtimestamp = BuildTimeFile.buildtime
 
-  navLinks: any[];
-  activeLinkIndex = -1; 
   constructor(private router: Router, private calcService: CalcService) {
-    this.navLinks = [
-        {
-            label: 'Calc',
-            link: './calc',
-            index: 0
-        }, {
-            label: 'Sheet',
-            link: './sheets/null',     
-            index: 1
-        } 
-    ];
-  }
-
-  ngOnInit(): void {
-    this.router.events.subscribe((res) => {
-        this.activeLinkIndex = this.navLinks.indexOf(this.navLinks.find(tab => tab.link === '.' + this.router.url));
-    });
   }
 
   clickRetrieve() {    

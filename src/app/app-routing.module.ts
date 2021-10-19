@@ -7,12 +7,9 @@ import { CalculatorComponent } from './calculator/calculator.component';
 const routes: Routes = [
   { path: '', redirectTo: '/calc', pathMatch: 'full' },
   { path: 'calc', component:  CalculatorComponent},
-  { path: 'sheets/:sheetIdsecond', component:  SheetComponent},
+  { path: 'sheets', component:  SheetComponent, pathMatch: 'full' },
+  { path: 'sheets/:sheetId', component:  SheetComponent},
 ];
-
-// { path: 'calculator', component:  CalculatorComponent},
-// { path: 'sheets/:sheetId', component:  SheetComponent},
-
 
 export const appRouting = RouterModule.forRoot(routes);
 

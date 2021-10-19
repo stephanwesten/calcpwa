@@ -14,7 +14,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SheetComponent } from './sheet/sheet.component';
 import { CalculatorComponent } from './calculator/calculator.component';
 import { MatButton, MatButtonModule } from '@angular/material/button';
-import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
