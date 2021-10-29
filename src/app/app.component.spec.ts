@@ -1,30 +1,26 @@
 // import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { TestBed } from '@angular/core/testing';
-import { MatInkBar, MatTab, MatTabGroup, MatTabHeader } from '@angular/material/tabs';
 import { AppComponent } from './app.component';
 
-// stubs
-@Component({selector: 'app-sheet', template: ''})
-class SheetComponent{}
-
-@Component({selector: 'app-calculator', template: ''})
-class CalculatorComponent{}
+class RouterMock {}
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [
         AppComponent,
-        MatTab,
-        MatTabGroup,
-        MatTabHeader,
-        MatInkBar,
-        SheetComponent,
-        CalculatorComponent
       ],
       // schemas: [NO_ERRORS_SCHEMA],
-    }).compileComponents();
+    })
+    .overrideComponent(
+      AppComponent,
+      {set: {providers: [
+        {provide: Router, useClass: RouterMock },
+      ]}
+    })
+    .compileComponents();
   });
 
 
@@ -34,10 +30,10 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'calc-pwa'`, () => {
+  it(`should have as title 'calcgems'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('calc-pwa');
+    expect(app.title).toEqual('calcgems');
   });
 
 });

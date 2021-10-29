@@ -1,5 +1,7 @@
 issues
 - remove bootstrap from package json etc
+- er is iets met een ngsw.json - blijkbaar vraagt safari om pwa informatie, maar in VS hebben we alleen een ngsw-config.json. In de CF doc staat bij mapRequestToAsset: For SPA mapping pass in the serveSinglePageApp function
+-
 
 
 ===========================
@@ -16,7 +18,7 @@ ng add @angular/pwa
 
 ng build
 wrangler init --site
-  followed instructions to edit the tomo file
+  followed instructions to edit the toml file
 wrangler publish  
 
 
@@ -46,7 +48,8 @@ when the right file is found add the component (add import and add schema) or st
 Cloudflare
 ============
 
-link: /sheets/b6i9f4nqm
+links: 
+https://calc-pwa.saw.workers.dev/sheets/sheet:2bia918r7
 
 I created by hand kv store: wrangler kv:namespace create "calcpwa"
 
@@ -56,10 +59,16 @@ wrangler kv:key get --binding=calcpwa test123
 curl https://calc-pwa.saw.workers.dev/kv
 curl -X PUT -H "Content-Type: application/json" -d '{"sheet":""}' https://calc-pwa.saw.workers.dev/kv
 
+wrangler tail --format pretty
 
 Update wrangler with: npm i @cloudflare/wrangler -g
 currently on v1.19.3
 note that there is a compatibility-date in wrangler.toml that needs an update in 2022
+
+added a preview_namespace for wrangler dev
+
+	 { binding = "calcpwa", preview_id = "188392300221423e88d4bd1fd6e6100a", id = "11e4a799014f4de8add3b1b7abc1ce3d" }
+
 
 Debugging workers
 -----------------

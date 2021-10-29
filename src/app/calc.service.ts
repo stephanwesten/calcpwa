@@ -21,15 +21,16 @@ export class CalcService {
 
   constructor(private http: HttpClient) { }
 
-  readonly kvUrl = 'cf/kv';
+  // prefix used by the cf worker to distinguish static assets from key value store
+  readonly kvUrl = 'cfkv';  
 
   getCurrentSheet() : Sheet {
     return this.currentSheet
   }
 
   getFromKVStore(uid: string) {
-    const url = this.kvUrl + "/sheet/" + uid
-    console.log('retrieve from ', url)
+    const url = this.kvUrl + "/" + uid
+    console.log('retrieve from: ', url)
     this.http.get<Sheet>(url).subscribe(
       data => {
         this.currentSheet = deserialize<Sheet>(data, Sheet)

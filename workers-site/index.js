@@ -1,6 +1,7 @@
 import { getAssetFromKV, mapRequestToAsset } from '@cloudflare/kv-asset-handler'
 import { request } from 'http'
 
+
 /**
  * The DEBUG flag will do two things that help during development:
  * 1. we will skip caching on the edge, which makes it easier to
@@ -37,12 +38,6 @@ async function handleEvent(event) {
   let options = {}
   console.log("*** handleEvent: ", url)
 
-  /**
-   * You can add custom logic to how we fetch your assets
-   * by configuring the function `mapRequestToAsset`
-   */
-  // options.mapRequestToAsset = handlePrefix(/^\/docs/)
-
   try {
     if (DEBUG) {      
       // customize caching
@@ -51,11 +46,13 @@ async function handleEvent(event) {
       };
     }
     console.log("** pathname: ", url.pathname)
-    if (url.pathname.startsWith("/cf/kv")) {
+    // determine to serve from cloudflare key value store (cfkv) or the static site
+    if (url.pathname.startsWith("/cfkv")) {
       // note: 'calcpwa' is defined in the wrangler.toml file as kvstore
+      // TODO: we should not hardcode this, but how to get a configured namespace is unknown
       console.log("** kv operation, method: ", event.request.method)
       if (event.request.method === "PUT") {
-        const uid = "sheet/" + genID()
+        const uid = "sheet:" + genID()
         console.log("** store key: " + uid)
         const body = await event.request.text()
         try {
@@ -79,6 +76,8 @@ async function handleEvent(event) {
       } else {
         // retrieve from KV
         try {
+          //TODO retrieve id from url;  pathname:  /sheets/sheet:c125np00d 
+          // this should become '/share' so we know we need to retrieve from cf
           let value = await calcpwa.get("test123")
           if (value) {
             console.log("** retrieved key test123")
@@ -94,12 +93,18 @@ async function handleEvent(event) {
       }
     }
 
+    console.log("** request to serve angular application: ", event.request)
+
+    // if the url starts with a prefix then strip this
+    options.mapRequestToAsset = handlePrefix(/^\/sheets\/.*/)
+
     // return angular application
     const page = await getAssetFromKV(event, options);
 
     // allow headers to be altered
     const response = new Response(page.body, page);
 
+    // TODO: set header sheetId:  pathname:  /share/sheet:2bia918r7 
     response.headers.set("X-XSS-Protection", "1; mode=block");
     response.headers.set("X-Content-Type-Options", "nosniff");
     response.headers.set("X-Frame-Options", "DENY");
@@ -124,21 +129,19 @@ async function handleEvent(event) {
   }
 }
 
-/**
- * Here's one example of how to modify a request to
- * remove a specific prefix, in this case `/docs` from
- * the url. This can be useful if you are deploying to a
- * route on a zone, or if you only want your static content
- * to exist at a specific path.
- */
+
 function handlePrefix(prefix) {
   return request => {
     // compute the default (e.g. / -> index.html)
     let defaultAssetKey = mapRequestToAsset(request)
     let url = new URL(defaultAssetKey.url)
+    console.log("request for url: ", url)
 
-    // strip the prefix from the path for lookup
-    url.pathname = url.pathname.replace(prefix, '/')
+    // replace the prefix (a sheet to be shared) with root index.html
+    // the pwa will load and use the original (!) url to navigate to the right place 
+    // this will load the sheet
+    url.pathname = url.pathname.replace(prefix, '/index.html')
+    console.log("stripped url: ", url)
 
     // inherit all other props from the default request
     return new Request(url.toString(), defaultAssetKey)

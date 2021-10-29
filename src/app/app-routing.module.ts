@@ -8,7 +8,8 @@ const routes: Routes = [
   { path: '', redirectTo: '/calc', pathMatch: 'full' },
   { path: 'calc', component:  CalculatorComponent},
   { path: 'sheets', component:  SheetComponent, pathMatch: 'full' },
-  { path: 'sheets/:sheetId', component:  SheetComponent},
+  { path: 'share', component:  SheetComponent, pathMatch: 'full' },         // user clicked share in toolbar
+  { path: 'sheets/:sheetId', component:  SheetComponent},                   // TODO: share/:sheetId
 ];
 
 export const appRouting = RouterModule.forRoot(routes);
