@@ -76,14 +76,18 @@ async function handleEvent(event) {
       } else {
         // retrieve from KV
         try {
-          //TODO retrieve id from url;  pathname:  /sheets/sheet:c125np00d 
-          // this should become '/share' so we know we need to retrieve from cf
-          let value = await calcpwa.get("test123")
+          // retrieve id from url/pathname:  /cfkv/sheets/sheet:c125np00d 
+          // for now we ignore whether the type, sheets, is properly specified
+          const pathArray = url.pathname.split('/')
+          const sheetId = pathArray[pathArray.length-1]
+          console.log("** retrieve sheetId: ", sheetId)
+          // we could detect whether sheetId is not empty to give better error feedback
+          let value = await calcpwa.get(sheetId)
           if (value) {
-            console.log("** retrieved key test123")
+            console.log("** retrieved key ", sheetId)
             return new Response(value, { status: 200 })
           } else {
-            console.log("** key test123 not found ")
+            console.log("** key not found ", sheetId)
             return new Response("{}", { status: 404 })
           }  
         } catch (err) {
