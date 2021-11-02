@@ -1,7 +1,31 @@
-<mat-grid-list cols="5" rowHeight="7vw" class="gridlist">
+<!-- <mat-grid-list cols="8" rowHeight="7vw" class="gridlist">
     <ng-container *ngFor="let expression of getExpressions()">
         <mat-grid-tile [colspan]="3" [rowspan]="1">{{expression.asDisplay()}}</mat-grid-tile>
         <mat-grid-tile [colspan]="1" [rowspan]="1"> = </mat-grid-tile>
         <mat-grid-tile [colspan]="1" [rowspan]="1">{{expression.outcome}}</mat-grid-tile>
+        <mat-grid-tile [colspan]="3" [rowspan]="1"> <input type="text" [(ngModel)]="expression.description"> </mat-grid-tile>
     </ng-container>
-</mat-grid-list>    
+</mat-grid-list>     -->
+
+
+<table mat-table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let expression"> {{expression.name}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="expression">
+        <th mat-header-cell *matHeaderCellDef> Expression </th>
+        <td mat-cell *matCellDef="let expression"> {{expression.asDisplay()}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="outcome">
+        <th mat-header-cell *matHeaderCellDef> Outcome </th>
+        <td mat-cell *matCellDef="let expression"> {{expression.outcome}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row (click)="editExpressionName(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>

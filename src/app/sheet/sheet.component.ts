@@ -12,6 +12,8 @@ import { Expression } from '../model/expression';
   styleUrls: ['./sheet.component.scss']
 })
 export class SheetComponent implements OnInit {
+  dataSource = this.getExpressions()
+  displayedColumns: string[] = [ 'name', 'expression', 'outcome'];
 
   constructor(private calcService: CalcService, private router: Router, private route: ActivatedRoute) { }
 
@@ -58,6 +60,10 @@ export class SheetComponent implements OnInit {
   //   let foo = JSON.stringify(this.calcService.getCurrentSheet())
   //   window.alert("retrieved: " + foo)
   // }
+
+  editExpressionName(expression: Expression) {
+    window.alert("Todo edit: " + expression.name)
+  }
 
   share() {
     const rtr = this.router

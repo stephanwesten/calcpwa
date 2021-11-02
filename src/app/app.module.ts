@@ -15,6 +15,8 @@ import { SheetComponent } from './sheet/sheet.component';
 import { CalculatorComponent } from './calculator/calculator.component';
 import { MatButton, MatButtonModule } from '@angular/material/button';
 import { AppRoutingModule } from './app-routing.module';
+import {MatTableModule} from '@angular/material/table';
+
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import { AppRoutingModule } from './app-routing.module';
     MatButtonModule, 
     MatSidenavModule, 
     MatToolbarModule,
+    MatTableModule,
     BrowserAnimationsModule,
     MatGridListModule,
     ServiceWorkerModule.register('ngsw-worker.js', {

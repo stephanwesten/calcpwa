@@ -1,20 +1,16 @@
 <div> 
   <mat-toolbar color="primary">
-    <div fxShow="true" fxHide.gt-sm="true">
-      <button mat-icon-button (click)="sidenav.toggle()">
-        <mat-icon>menu</mat-icon>
-      </button>
-    </div>
 
-    <a mat-button class="companyName" routerLink="/">
-      <span>Calcgems</span>
-    </a>
     <span class="example-spacer"></span>
     <div fxShow="true" fxHide.lt-md="true">
       <a mat-button routerLink="/calc">Calculator</a>
       <a mat-button routerLink="/sheets">Sheets</a>
       <a mat-button routerLink="/share">Share</a>
     </div>
+    <span class="fill-space"></span>
+    <span>
+      <div style="color:rgb(128, 128, 128);font-size: 10px;">{{buildtimestamp | date:'y-MM-d HH:MM' }}</div>
+    </span>
 
   </mat-toolbar>
   <mat-sidenav-container fxFlexFill class="example-container">
@@ -47,7 +43,3 @@
       </a>
   </nav>
   <router-outlet></router-outlet> -->
-
-  <footer>
-    <div style="color:rgb(128, 128, 128);font-size: 10px;">{{buildtimestamp | date:'y-MM-d HH:MM' }}</div>
-</footer>

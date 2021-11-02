@@ -2,13 +2,11 @@ import { ExpressionItem } from "./expression-item";
 import {
   JsonProperty,
   Serializable,
-  deserialize,
-  serialize
 } from 'typescript-json-serializer';
+
 import { Value } from "./value";
 import { Operator } from "./operator";
 import { Bracket } from "./bracket";
-import { ɵangular_packages_platform_browser_dynamic_testing_testing_b } from "@angular/platform-browser-dynamic/testing";
 
 // the serializer libary needs a function to determine the subtype
 // https://github.com/GillianPerard/typescript-json-serializer
@@ -27,16 +25,31 @@ export const ExprItemSubType = (exprItem: any) => {
     }
 }
 
+const genID = function () {
+  // Math.random should be unique because of its seeding algorithm.
+  // Convert it to base 36 (numbers + letters), and grab the first 9 characters
+  // after the decimal.
+  return Math.random().toString(36).substr(2, 9);
+};
+
+
 @Serializable()
 export class Expression {
+  @JsonProperty()
+  id: string;
+  @JsonProperty()
+  name: string;
   @JsonProperty({type: ExpressionItem, predicate: ExprItemSubType })
   private items: Array<ExpressionItem>;
   @JsonProperty()
   outcome?: number;
 
+
   constructor() {
     this.items = []
     this.outcome = undefined
+    this.id = genID()
+    this.name = "(unknown)"
   }
 
   size(): number {
@@ -90,6 +103,7 @@ export class Expression {
   }
 
   // for display usage
+  // it would be better to use div elements and css for the spacing
   asDisplay(): string {
     var result = ""
     this.items.forEach(item => {
