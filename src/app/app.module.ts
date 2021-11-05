@@ -2,8 +2,10 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { MatTabsModule } from '@angular/material/tabs';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ClipboardModule } from '@angular/cdk/clipboard'
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -13,28 +15,32 @@ import { environment } from '../environments/environment';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SheetComponent } from './sheet/sheet.component';
 import { CalculatorComponent } from './calculator/calculator.component';
-import { MatButton, MatButtonModule } from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
 import { AppRoutingModule } from './app-routing.module';
-import {MatTableModule} from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
+import { ShareFormComponent } from './share-form/share-form.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     SheetComponent,
-    CalculatorComponent
+    CalculatorComponent,
+    ShareFormComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     MatTabsModule,
-    MatIconModule, 
+    MatIconModule,
+    ReactiveFormsModule, 
     MatButtonModule, 
     MatSidenavModule, 
     MatToolbarModule,
     MatTableModule,
     BrowserAnimationsModule,
     MatGridListModule,
+    ClipboardModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the app is stable

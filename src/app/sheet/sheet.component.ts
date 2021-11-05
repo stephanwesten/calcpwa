@@ -68,9 +68,12 @@ export class SheetComponent implements OnInit {
   share() {
     const rtr = this.router
     if (this.calcService.getCurrentSheet().size() > 0) {
+      // save the sheet in cf kv store
       this.calcService.setToKVStore().subscribe({
+        // cf worker returns a response with the id of the sheet
         next(response) {
           console.log('response worker: ', response)
+          // determine the url e.g. calcpwa.saw.cloudflare.worker
           const baseURL = rtr['location']._platformLocation.location.origin
           // this url will make the pwa navigate to the right place after being loaded from CF
           // (because in the worker we detect the 'sheets' prefix, load the pwa, and the pwa will navigate to the right place)

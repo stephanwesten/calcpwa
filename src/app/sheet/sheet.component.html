@@ -1,12 +1,5 @@
-<!-- <mat-grid-list cols="8" rowHeight="7vw" class="gridlist">
-    <ng-container *ngFor="let expression of getExpressions()">
-        <mat-grid-tile [colspan]="3" [rowspan]="1">{{expression.asDisplay()}}</mat-grid-tile>
-        <mat-grid-tile [colspan]="1" [rowspan]="1"> = </mat-grid-tile>
-        <mat-grid-tile [colspan]="1" [rowspan]="1">{{expression.outcome}}</mat-grid-tile>
-        <mat-grid-tile [colspan]="3" [rowspan]="1"> <input type="text" [(ngModel)]="expression.description"> </mat-grid-tile>
-    </ng-container>
-</mat-grid-list>     -->
 
+<app-share-form></app-share-form>
 
 <table mat-table [dataSource]="dataSource">
 
