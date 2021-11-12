@@ -1,16 +1,26 @@
 
-<form [formGroup]="shareForm">
-
-    <label for="name">Name: </label>
-    <input id="name" type="text" formControlName="name">
-  
-    <label for="description">Description: </label>
-    <input id="description" type="text" size="60" formControlName="description">
+<form [formGroup]="shareForm" class="share-form">
     <p>Provide a name to share the sheet.</p>
-    <button type="submit" [disabled]="!shareForm.valid" (click)="share()">Share</button>
-    <div></div>
-    <label>Link that can be shared: </label>
-    <input id="link" type="text" size="60" formControlName="link">
-    <button [cdkCopyToClipboard]="shareForm.controls['link'].value" [disabled]="shareForm.controls['link'].value === ''">Copy to clipboard</button>
-    <div>The shared sheet remains available for the next 2 weeks</div>
+
+    <mat-form-field class="share-full-width" appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="e.g. expenses" id="name" formControlName="name">
+    </mat-form-field>
+
+    <mat-form-field class="share-full-width" appearance="fill">
+        <mat-label>Description</mat-label>
+        <input matInput placeholder="e.g. yesterday's dinner" id="description" formControlName="description"/>
+      </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="!shareForm.valid" (click)="share()">Share</button> 
+    <div *ngIf="shareForm.controls['link'].value !== ''">
+        <mat-divider></mat-divider>
+        <div>Link that can be shared:</div>
+        <mat-form-field class="share-full-width" appearance="fill">
+            <input matInput placeholder="e.g. expenses" id="link" formControlName="link">
+        </mat-form-field>
+        <button mat-raised-button [cdkCopyToClipboard]="shareForm.controls['link'].value" [disabled]="shareForm.controls['link'].value === ''">Copy to clipboard</button>
+        <div>The shared sheet remains available for the next 2 weeks</div>
+    </div>
+
 </form>

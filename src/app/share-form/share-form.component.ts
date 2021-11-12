@@ -26,6 +26,7 @@ export class ShareFormComponent implements OnInit {
   }
 
   share() {
+    //TOO: copy from form controls the name and description to the sheet
     const rtr = this.router
     const linkControl = this.shareForm.controls["link"]    
     // save the sheet in cf kv store

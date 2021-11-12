@@ -6,6 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ClipboardModule } from '@angular/cdk/clipboard'
+import { MatDialogModule } from '@angular/material/dialog'
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -19,6 +20,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { AppRoutingModule } from './app-routing.module';
 import { MatTableModule } from '@angular/material/table';
 import { ShareFormComponent } from './share-form/share-form.component';
+import { MatFormFieldModule} from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatDividerModule } from '@angular/material/divider'
+
 
 
 @NgModule({
@@ -38,9 +43,13 @@ import { ShareFormComponent } from './share-form/share-form.component';
     MatSidenavModule, 
     MatToolbarModule,
     MatTableModule,
+    MatFormFieldModule,
+    MatInputModule,
     BrowserAnimationsModule,
     MatGridListModule,
     ClipboardModule,
+    MatDialogModule,
+    MatDividerModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the app is stable

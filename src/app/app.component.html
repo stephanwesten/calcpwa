@@ -5,12 +5,12 @@
     <div fxShow="true" fxHide.lt-md="true">
       <a mat-button routerLink="/calc">Calculator</a>
       <a mat-button routerLink="/sheets">Sheets</a>
-      <a mat-button routerLink="/share">Share</a>
     </div>
     <span class="fill-space"></span>
-    <span>
+    <button mat-raised-button color="accent" (click)=share()>Share</button>
+    <div>
       <div style="color:rgb(128, 128, 128);font-size: 10px;">{{buildtimestamp | date:'y-MM-d HH:MM' }}</div>
-    </span>
+    </div>
 
   </mat-toolbar>
   <mat-sidenav-container fxFlexFill class="example-container">
